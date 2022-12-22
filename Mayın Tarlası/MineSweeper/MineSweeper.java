@@ -93,39 +93,51 @@ public class MineSweeper {
 					int minesCounter = 0;
 
 					if (minesBoard[row][col] != "*") {
+						//Satır sayısı 0 olamaz çünkü üstünde baska satır olamayacagı için kontrol olmaz.
 						if (row != 0) {
+							// satır solu 
 							if (minesBoard[row - 1][col] == "*") {
 								minesCounter++;
 							}
 							if (col != 0) {
+								//sol üst çapraz 
 								if (minesBoard[row - 1][col - 1] == "*") {
 									minesCounter++;
 								}
 							}
 						}
+						//Satır sayısı, tahtanın satır(index olarak) sayısına eşit olmaması gerekir. Çünkü altında baska satır olmayacağı için kontrol olmaz.
 						if (row != rows - 1) {
+							//satır altı
 							if (minesBoard[row + 1][col] == "*")
 								minesCounter++;
 							if (col != columns - 1) {
+								// sağ alt çapraz
 								if (minesBoard[row + 1][col + 1] == "*") {
 									minesCounter++;
 								}
 							}
 						}
+						//Kolon 0 olmaması gerekir. Çünkü 0 olduğunda sol tarafa kontrol olmayacağı için kolonun 0 olmaması gerekir.
 						if (col != 0) {
+							// kolon solu
 							if (minesBoard[row][col - 1] == "*")
 								minesCounter++;
 							if (row != rows - 1) {
+								// sol alt çapraz
 								if (minesBoard[row + 1][col - 1] == "*") {
 									minesCounter++;
 								}
 							}
 						}
+						//son kolondan sağ tarafa kontrol olmayacağı için kolonun, tahtanın kolonuna(index olarak) eşit olmaması gerekir.
 						if (col != columns - 1) {
+							//sağ yan
 							if (minesBoard[row][col + 1] == "*") {
 								minesCounter++;
 							}
 							if (row != 0) {
+								//sağ üst çapraz
 								if (minesBoard[row - 1][col + 1] == "*") {
 									minesCounter++;
 								}
